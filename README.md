@@ -1,4 +1,4 @@
-GreenCoinX-Identified
-=====================
+GreenCoin-Test
+==============
 
-GreenCoinX-Identified
+GreenCoin Test Suite for developers

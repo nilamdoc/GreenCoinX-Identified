@@ -1,0 +1,118 @@
+Fresh CentOS 6.4 Compiling GreenCoin
+
+yum clean all
+yum update glibc\*
+yum update yum\* rpm\* python\*
+yum clean all
+yum update
+
+reboot 
+yum install lynx
+yum install python-devel
+yum install qt-devel boost-devel db4-devel zlib-devel boost db4 gcc-c++ openssl-devel rpm-build
+yum install openssl-devel
+yum install boost
+yum install db4
+yum install gcc-c++
+yum install rpm-build
+yum install redhat-rpm-config  
+yum -y groupinstall 'Development tools'
+yum -y install zlib-devel
+yum -y install krb5-devel
+yum install zlib-static
+
+wget http://www.openssl.org/source/openssl-1.0.1f.tar.gz
+./config
+make
+make install
+
+export OPENSSL_INCLUDE_PATH="/usr/local/ssl/include"
+export OPENSSL_LIB_PATH="/usr/local/ssl/lib"
+
+
+
+make -f makefile.unix BOOST_LIB_SUFFIX=-mt USE_UPNP=-
+make -f makefile.mingw BOOST_LIB_SUFFIX=-mt USE_UPNP=-
+
+
+nano /etc/rc.d/init.d/greencoind
+=====================================================================
+#!/bin/bash
+#chkconfig: 2345 95 20
+
+. /etc/rc.d/init.d/functions
+
+case "$1" in
+  start)
+        # Start daemons.
+        echo -n "Starting greencoind: "
+        daemon /bin/greencoind &
+        echo "Started!"
+        ;;
+  stop)
+        # Stop daemons.
+        echo -n "Shutting down greencoind: "
+       daemon  /bin/greencoind stop
+        echo "Stopped!"
+        ;;
+  *)
+        echo "Usage: greencoind {start|stop}"
+        exit 1
+esac
+
+exit 0
+======================================================================
+chkconfig --levels 235 greencoind on
+ chmod 777 /etc/rc.d/init.d/greencoind
+======================================================================
+service greencoind start
+======================================================================
+
+
+
+
+
+
+yum install rpm-build krb5-devel zlib-devel gcc gmp-devel libcurl-devel openldap-devel  NetworkManager-devel NetworkManager-glib-devel sqlite-devel
+
+
+curl -O http://dl.iuscommunity.org/pub/ius/stable/CentOS/6/SRPMS/openssl10-1.0.1e-1.ius.centos6.src.rpm
+/usr/bin/mock --rebuild /src/openssl10-1.0.1e-1.ius.centos6.src.rpm
+
+
+
+\x Windows\Windows_2008_R2_64bit_English.ISO
+
+
+-----------Windows------------------------
+
+http://sourceforge.net/projects/mingw/files/latest/download?source=files
+ Install with the C++ and MSYS options checked.
+ 
+Activestate Perl (for building openssl) from
+http://www.activestate.com/activeperl/downloads. You don't need
+anything except ActivePerl and Perl, none of the other fancy crap.
+You do want to add Perl to your PATH (its an option in the
+installer).
+
+
+https://bitcointalk.org/index.php?topic=149479.0
+
+Download:
+
+    WxWidgets 2.9.1:
+    http://sourceforge.net/projects/wxwindows/files/2.9.1/wxWidgets-2.9.1.zip/download. Unzip to C:\wxWidgets-2.9.1-mgw
+    OpenSSL 1.0.0d: http://www.openssl.org/source/openssl-1.0.0d.tar.gz. Untar to C:\openssl-1.0.0c-mgw (yes bitcoin is designed to build with 1.0.0c, but might as well use the latest version since it works right?) Hint: untar using the tar binary which is included in MinGW (do not use 7-zip, it will not handle symlinks correctly) using cd \c\ && tar xvvf\c\Users\Matt\Downloads\openssl-1.0.0d.tar.gz && mv openssl-1.0.0d openssl-1.0.0c-mgw in the msys shell
+    Berkeley DB 4.7.25 NC: http://download.oracle.com/berkeley-db/db-4.7.25.NC.zip. Unzip to C:\db-4.7.25.NC-mgw
+    Boost 1.43.0:
+    http://sourceforge.net/projects/boost/files/boost/1.43.0/boost_1_43_0.zip/download. Unzip to C:\boost-1.43.0-mgw
+
+    Boost Jam:
+    http://sourceforge.net/projects/boost/files/boost-jam/3.1.18/boost-jam-3.1.18-1-ntx86.zip/download. Unzip wherever you like, I used C:\bjam
+
+    miniUPnPc binary
+    http://miniupnp.tuxfamily.org/files/download.php?file=upnpc-exe-win32-20110215.zip. Unzip to C:\upnpc-exe-win32-20110215
+
+    miniUPnPc source
+    http://miniupnp.tuxfamily.org/files/download.php?file=miniupnpc-1.5.20110215.tar.gz. Untar to C:\upnpc-exe-win32-20110215\miniupnpc (you only need *.h, but the others won't hurt) untar with cd \c\upnpc-exe-win32-20110215 && tar xvvf \c\Users\Matt\Downloads\miniupnpc-1.5.20110215.tar.gz && mv miniupnpc-1.5.20110215 miniupnpc
+
