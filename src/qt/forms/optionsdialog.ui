@@ -25,17 +25,19 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-
-
-
-	 <widget class="QWidget" name="tabIdentification">
-	  <attribute name="title">
+     <widget class="QWidget" name="tabIdentification">
+      <attribute name="title">
        <string>&amp;Identification</string>
       </attribute>
-	  
-	<layout class="QVBoxLayout" name="verticalLayout_Identification">
-       <item>
+      <layout class="QVBoxLayout" name="verticalLayout_Identification">
+       <item alignment="Qt::AlignTop">
         <widget class="QLabel" name="howToIdentify">
+         <property name="minimumSize">
+          <size>
+           <width>498</width>
+           <height>128</height>
+          </size>
+         </property>
          <property name="text">
           <string>Identification should be enabled on GreenCoin. Recommended email address and mobile phone for identification purpose.</string>
          </property>
@@ -62,7 +64,7 @@
            </property>
           </widget>
          </item>
-									<item>
+         <item>
           <widget class="QLabel" name="identificationMobileLabel">
            <property name="text">
             <string>&amp;Mobile Number</string>
@@ -78,12 +80,7 @@
         </layout>
        </item>
       </layout>
-
-	  </widget>
-
-
-
-
+     </widget>
      <widget class="QWidget" name="tabMain">
       <attribute name="title">
        <string>&amp;Main</string>
