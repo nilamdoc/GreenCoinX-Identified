@@ -13,12 +13,12 @@ src/test_greencoin
 
 # Compilation and Qt preprocessor part
 *.qm
-Makefile
+
 greencoin-qt
 Greencoin-Qt.app
 
 # Unit-tests
-Makefile.test
+
 greencoin-qt_test
 
 # Resources cpp
