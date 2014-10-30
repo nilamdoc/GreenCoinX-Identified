@@ -1,0 +1,17 @@
+sudo apt-get update
+sudo apt-get install -y git-core build-essential libssl-dev libboost-all-dev libdb5.1-dev libdb5.1++-dev libgtk2.0-dev
+cd/tmp
+git clone https://github.com/nilamdoc/GreenCoinX-Identified
+cd GreenCoinX-Identified/src
+cd leveldb
+chmod 777 build_detect_platform
+make 
+cd ..
+
+ 
+make -f makefile.unix clean; make -f makefile.unix USE_UPNP= greencoind
+ 
+ 
+ 
+# optionally,
+strip greencoind
